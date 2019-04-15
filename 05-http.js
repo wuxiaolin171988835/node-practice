@@ -11,6 +11,7 @@ http.createServer((req, res) => {
       if (err) {
         res.statusCode = 500
         res.end('500-Internal Server Error')
+        return;
       }
       res.statusCode = 200;//请求成功
       res.setHeader('Content-type', 'text/html');
@@ -24,6 +25,10 @@ http.createServer((req, res) => {
       name: 'tom',
       age: 20
     }]))
+  }else if(req.headers.accept.indexOf('image/*')!==-1 && method==='GET'){
+    console.log('.'+url);
+    fs.createReadStream(path.resolve('.'+url)).pipe(res)
+
   }
 
-}).listen(3012)
+}).listen(3016)

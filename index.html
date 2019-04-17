@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="icon" href="data:image/ico;base64,aWNv">
   <style>
 
   </style>
@@ -14,6 +15,25 @@
 <body>
   <h2>首页</h2>
   <img src="./assets/images/vue.jpg" alt="">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // 简单请求
+    // axios.get('http://localhost:3006/users').then(res => res.data).then(users => console.log(users));
+    // 预检测请求options
+    // axios.post('http://localhost:3006/users', { foo: 'bar' }, {
+    //   headers: {
+    //     'X-Token': 'some token'
+    //   }
+    // }).then(res => res.data).then(users => console.log(users));
+    // cookie证书
+    axios.post('http://localhost:3006/users', { foo: 'bar' }, {
+      headers: {
+        'X-Token': 'some token'
+      },
+      withCredentials: true
+    }).then(res => res.data).then(users => console.log(users));
+
+  </script>
 </body>
 
 </html>
